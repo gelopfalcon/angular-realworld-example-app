@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: angular-deployment 
+spec: 
+  selector: 
+    matchLabels: 
+      web: angular
+  replicas: 2 # tells deployment to run 2 pods matching the template 
+  template: 
+    metadata: 
+      labels: 
+        web: angular 
+    spec: 
+      containers: 
+      - name: angular 
+        image: glgelopfalcon/angular-realworld:5
+        ports: 
+        - containerPort: 80
+--- 
+# https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service  
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: angular-service 
+spec: 
+  selector: 
+    web: angular
+  ports: 
+  - port: 80
+    targetPort: 80
+  type: NodePort 
