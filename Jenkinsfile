@@ -30,6 +30,19 @@ pipeline {
                 sh 'sed -i -e "s/\\/angular-realworld:.*/\\/angular-realworld:${BUILD_NUMBER}/" angular-realworld.yml'
                 sh 'sudo kubectl apply -f  angular-realworld.yml'
             }
-        } 
+        }
+        
+      stage('Running Integration test') {
+            steps {
+                echo "Step 1: INT test"
+            }
+      }
+      
+      stage('Prune Docker Images') {
+            steps {
+                echo 'Step 1: Prune images'
+                sh 'docker image prune -a -f'
+            }
+        }
     }
 }
