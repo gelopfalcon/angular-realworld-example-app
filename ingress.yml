@@ -1,0 +1,17 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "ingress-lb"
+  namespace: "default"
+spec:
+  backend:
+    serviceName: "angular-service"
+    servicePort: 80
+  rules:
+  - http:
+      paths:
+      - path: "/api/*"
+        backend:
+          serviceName: "realworld-node-service"
+          servicePort: 3000
+          
