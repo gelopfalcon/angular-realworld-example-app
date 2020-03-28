@@ -16,6 +16,10 @@ This codebase was created to demonstrate a fully fledged application built with 
 
 Additionally, there is an Angular 1.5 version of this codebase that you can [fork](https://github.com/gothinkster/angularjs-realworld-example-app) and/or [learn how to recreate](https://thinkster.io/angularjs-es6-tutorial).
 
+# Enhancements
+- Ready to use docker: I have added a Dockerfile in order to use containers.
+- The angular-realworld.yml file contains the kubernetes' deployment (services, replicas, zero downtime).
+- The ingress.yml file defines the mapping between services in order to communicate each order.
 
 # How it works
 
